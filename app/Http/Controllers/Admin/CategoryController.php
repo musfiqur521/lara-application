@@ -14,7 +14,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderby('id', 'desc')->get();
-        return view('admin.category');
+
+        return view('admin.category', compact('categories'));
     }
 
     /**

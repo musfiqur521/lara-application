@@ -12,7 +12,7 @@
 
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between">
-            <h3 class="card-title">Categories</h3>
+            <h4 class="card-title">All Categories</h4>
 
                 <button class="btn btn-primary" data-toggle="modal" data-target="#AddCategoryModal">Add Category</button>
 
@@ -27,13 +27,19 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                td<tbody>
-                    <tr>
-                        <td>SL</td>
-                        <td>Name</td>
-                        <td>Description</td>
-                        <td>Action</td>
-                    </tr>
+                <tbody>
+                    @foreach ($categories as $sl => $category)
+                        <tr>
+                            <td>{{ ++$sl }}</td>
+                            <td>{{ $category->name }}</td>
+                            <td>{{ $category->description }}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
+
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
