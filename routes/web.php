@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 
 
 Route::get('/', function () {
@@ -38,6 +39,6 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
 
-    Route::resource('/admin/category', CategoryController::class); 
+    Route::resource('/admin/category', CategoryController::class);
 
 });
