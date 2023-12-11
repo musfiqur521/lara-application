@@ -60,6 +60,7 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         //
+
     }
 
     /**
@@ -67,7 +68,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+
+        $request->validate([
+            'name' => 'required|unique:categories,name,' . $category->id . '|max:255',
+            'description' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+        ];
+
+        $category->update($data);
+
+        return redirect()->back();
     }
 
     /**
@@ -75,6 +90,10 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->delete();
+
+        return redirect()->back();
     }
 }
