@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -12,6 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categories = Category::orderby('id', 'desc')->get();
         return view('admin.category');
     }
 
@@ -28,7 +30,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories,name|max:255',
+            'description' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+        ];
+
+        Category::create($data);
+
+        return redirect()->back();
     }
 
     /**
