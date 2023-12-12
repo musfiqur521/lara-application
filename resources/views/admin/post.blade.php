@@ -24,6 +24,7 @@
                         <th>Description</th>
                         <th>Category</th>
                         <th>Thumnail</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -37,10 +38,18 @@
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->description }}</td>
                                 <td>{{ $post->category_name }}</td>
+
                                 <td>
                                     <img src="{{ asset('post_thumbnails/' . $post->thumbnail) }}" alt=""
                                     style="width: 100px">
                                 </td>
+                            <td>
+                                @if ($post->status == 1)
+                                    <span class="badge badge-success">Active</span>
+                                @else
+                                    <span class="badge badge-danger">Inactive</span>
+                                @endif
+                            </td>
                                 <td>
                         {{-- - Unique ID post Part ----}}
                                 <div class="d-flex">
@@ -63,39 +72,65 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{ $post->name }}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{ $post->title }}</h5>
                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
 
-                                        <form action="{{ route('post.update', $post->id) }}" method="POST">
+                            <form action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="_method" value="put">
                                         <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="">post Name</label>
 
-                                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $post->name }}">
+    <div class="form-group">
+        <label for="">post Title</label>
 
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong></span>
-                                                @enderror
+        <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $post->title }}">
 
-                                            </div>
+        @error('title')
+            <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong></span>
+        @enderror
 
-                                            {{-- Description part --}}
-                                            <div class="form-group">
-                                                <label for="">post Description</label>
-                                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="5">{{ $post->description }}</textarea>
+    </div>
 
-                                                @error('description')
-                                                    <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong></span>
-                                                @enderror
-                                            </div>
-                                        </div>
+    <div class="form-group">
+        <label for="post_name">post Category</label>
+        <select name="category_id" class="form-control">
+
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}" @if ($category->id == $post->category_id) selected @endif>
+                    {{ $category->name }}</option>
+
+            @endforeach
+        </select>
+
+    </div>
+
+    {{-- Post Description --}}
+    <div class="form-group">
+        <label for="">post Description</label>
+        <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="5">{{ $post->description }}</textarea>
+
+        @error('description')
+            <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+
+    {{-- Post Thumbile --}}
+    <div class="form-group">
+        <label for="post_name">post Thumbnail</label>
+        <input type="file" class="form-control-file" name="thumbnail">
+        <input type="hidden" name="old_thumb" value="{{ $post->thumbnail }}">
+    </div>
+
+</div>
+
+<label for="status" class="form-check-label">
+    <input type="checkbox" value="1" name="status" id="status" @if ($post->status == 1) checked @endif>Status
+</label>
                                             <div class="modal-footer">
                                                 <a class="btn btn-light" type="button" data-dismiss="modal">Cancel</a>
                                                 <button class="btn btn-primary" type="submit">Update post</button>
@@ -132,8 +167,9 @@
                     <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
+
                             <div class="form-group">
-                                <label for="">post Title</label>
+                                <label for="post_name">post Title</label>
 
                                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
 
@@ -145,7 +181,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="">post Category</label>
+                                <label for="post_name">post Category</label>
                                 <select name="category_id" class="form-control">
 
                                     <option selected disabled>Select Category</option>
@@ -159,7 +195,7 @@
 
                             {{-- Post Description --}}
                             <div class="form-group">
-                                <label for="">post Description</label>
+                                <label for="post_name">post Description</label>
                                 <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="5">{{ old('description') }}</textarea>
 
                                 @error('description')
