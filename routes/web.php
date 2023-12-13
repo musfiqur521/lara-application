@@ -6,11 +6,9 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\UserController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -44,6 +42,6 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::resource('/admin/post', PostController::class);
 
-    
+
 
 });
