@@ -5,7 +5,7 @@
             <h2 class="h5 section-title">Editors Pick</h2>
             <article class="card">
             <div class="post-slider slider-sm">
-                <img src="images/post/post-1.jpg" class="card-img-top" alt="post-thumb">
+                <img src="{{ asset('user_assets/images/post/post-1.jpg') }}" class="card-img-top" alt="post-thumb">
             </div>
 
             <div class="card-body">
@@ -13,7 +13,7 @@
                 <ul class="card-meta list-inline">
                 <li class="list-inline-item">
                     <a href="author-single.html" class="card-meta-author">
-                    <img src="{{ assets('user_assets/images/john-doe.jpg') }}">
+                    <img src="{{ asset('user_assets/images/john-doe.jpg') }}">
                     <span>Charls Xaviar</span>
                     </a>
                 </li>
@@ -41,7 +41,7 @@
 
             <article class="card mb-4">
             <div class="card-body d-flex">
-                <img class="card-img-sm" src="{{ assets('user_assets/images/post/post-3.jpg') }}">
+                <img class="card-img-sm" src="{{ asset('user_assets/images/post/post-3.jpg') }}">
                 <div class="ml-3">
                 <h4><a href="post-details.html" class="post-title">Advice From a Twenty Something</a></h4>
                 <ul class="card-meta list-inline mb-0">
@@ -58,7 +58,7 @@
 
             <article class="card mb-4">
             <div class="card-body d-flex">
-                <img class="card-img-sm" src="{{ assets('user_assets/images/post/post-2.jpg') }}">
+                <img class="card-img-sm" src="{{ asset('user_assets/images/post/post-2.jpg') }}">
                 <div class="ml-3">
                 <h4><a href="post-details.html" class="post-title">The Design Files - Homes Minimalist</a></h4>
                 <ul class="card-meta list-inline mb-0">
@@ -75,7 +75,7 @@
 
             <article class="card mb-4">
             <div class="card-body d-flex">
-                <img class="card-img-sm" src="{{ assets('user_assets/images/post/post-4.jpg') }}">
+                <img class="card-img-sm" src="{{ asset('user_assets/images/post/post-4.jpg') }}">
                 <div class="ml-3">
                 <h4><a href="post-details.html" class="post-title">The Skinny Confidential</a></h4>
                 <ul class="card-meta list-inline mb-0">
@@ -96,14 +96,14 @@
 
             <article class="card">
             <div class="post-slider slider-sm">
-                <img src="{{ assets('user_assets/images/post/post-5.jpg') }}" class="card-img-top" alt="post-thumb">
+                <img src="{{ asset('user_assets/images/post/post-5.jpg') }}" class="card-img-top" alt="post-thumb">
             </div>
             <div class="card-body">
                 <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">How To Make Cupcakes and Cashmere Recipe At Home</a></h3>
                 <ul class="card-meta list-inline">
                 <li class="list-inline-item">
                     <a href="author-single.html" class="card-meta-author">
-                    <img src="{{ assets('user_assets/images/kate-stone.jpg') }}" alt="Kate Stone">
+                    <img src="{{ asset('user_assets/images/kate-stone.jpg') }}" alt="Kate Stone">
                     <span>Kate Stone</span>
                     </a>
                 </li>
