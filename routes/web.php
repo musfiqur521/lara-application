@@ -10,6 +10,10 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [UserController::class, 'index']);
 
+Route::get('/posts/{id}', [UserController::class, 'single_post_view'])->name('single_post_view');
+
+Route::get('/posts/category/[category_id]', [UserController::class, 'filter_by_category'])->name('filter_by_category');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
