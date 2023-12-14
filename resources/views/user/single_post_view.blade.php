@@ -27,7 +27,11 @@
                     </ul>
             </ul>
             <div class="content">
-                <p>{{ $post->description }}</p>
+                <p>
+                    @php
+                            echo $post->description;
+                        @endphp
+                </p>
             </div>
             </article>
 

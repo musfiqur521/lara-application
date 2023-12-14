@@ -36,7 +36,11 @@
                         <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>{{ $post->description }}</td>
+                                <td>
+                                    @php
+                                        echo $post->description;
+                                    @endphp
+                                </td>
                                 <td>{{ $post->category_name }}</td>
 
                                 <td>
@@ -67,9 +71,9 @@
 
 
                         {{-- ###  post Edit Modal ### --}}
-                        <div class="modal fade" id="{{ 'Edit' . $post->id . 'postModel'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        <div class="modal" id="{{ 'Edit' . $post->id . 'postModel'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog model-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">{{ $post->title }}</h5>
@@ -111,7 +115,7 @@
     {{-- Post Description --}}
     <div class="form-group">
         <label for="">post Description</label>
-        <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="5">{{ $post->description }}</textarea>
+        <textarea  name="description" class="summernote form-control @error('description') is-invalid @enderror" rows="5">{{ $post->description }}</textarea>
 
         @error('description')
             <span class="invalid-feedback" role="alert">
@@ -151,9 +155,9 @@
 
 
         <!-- post Add Modal-->
-    <div class="modal fade" id="AddpostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal" id="AddpostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog model-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Add post</h5>
@@ -196,7 +200,7 @@
                             {{-- Post Description --}}
                             <div class="form-group">
                                 <label for="post_name">post Description</label>
-                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="5">{{ old('description') }}</textarea>
+                                <textarea name="description" class="summernote form-control @error('description') is-invalid @enderror" rows="5">{{ old('description') }}</textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
