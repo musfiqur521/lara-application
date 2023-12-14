@@ -3,7 +3,7 @@
 @section('mainSection')
 
     @include('layouts.banner')
-    @include('layouts.trending')
+    {{-- @include('layouts.trending') --}}
 
     <section class="section-sm">
         <div class="container">
