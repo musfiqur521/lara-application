@@ -34,4 +34,17 @@ class UserController extends Controller
 
         return view('user.single_post_view', compact('post'));
     }
+
+    public function filter_by_category($id)
+    {
+        $postObj = new Post();
+
+        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        ->select('posts.*', 'categories.name as category_name')
+        ->where('posts.category_id', $id)
+        ->where('posts.status', 1)
+        ->orderBy('posts.id', 'DESC')
+        ->get();
+
+        return view('user.index', compact('posts'));}
 }
