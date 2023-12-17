@@ -31,15 +31,21 @@
                 <ul class="card-meta list-inline mt-4">
                     <li class="list-inline-item">
                     <a href="#" class="card-meta-author">
+                        @if ($question->user_photo)
                         <img src="{{ asset('images/user_photos/' . $question->user_photo) }}">
+
+                        @else
+                        <img src="{{ asset('images/user_photos/no_image.jpg') }}">
+                        @endif
                         <span>{{ $question->user_name }}</span>
                     </a>
                     </li>
                     <li class="list-inline-item">
-                    <i class="ti-calendar"></i>14 jan, 2020
+                    <i class="ti-calendar"></i>
+                    {{ date('d M, Y', strtotime($question->created_at)) }}
                     </li>
                     <li class="list-inline-item text-primary">
-                    <i class="ti-bookmark"></i>Programming
+                    <i class="ti-bookmark"></i>{{ $question->category_name }}
                     </li>
                     <li class="list-inline-item text-primary">
                     <i class="ti-comment"></i>5 answers
@@ -51,6 +57,10 @@
             </div>
 
             @endforeach
+
+           <div class="mt-4">
+            {{ $questions->links('pagination::bootstrap-5')  }}
+           </div>
 
             <!-- ask question form -->
             <h3 class="h4 mb-3" id="askQuestion">Ask a question</h3>
