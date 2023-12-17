@@ -76,4 +76,11 @@ class UserController extends Controller
         $notify = ['message' => 'Comment Added Successfully', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
     }
+
+    public function questions()
+    {
+        $categories = Category::all();
+
+        return view('user.questions', compact('categories'));
+    }
 }
