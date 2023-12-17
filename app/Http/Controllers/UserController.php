@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Question;
+use App\Models\PostComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\PostComment;
 
 
 
@@ -79,8 +80,35 @@ class UserController extends Controller
 
     public function questions()
     {
+        $questionObj = new Question();
+
+        $questions = $questionObj->join('categories', 'categories.id', '=', 'questions.category_id')
+        ->join('users', 'users.id', '=', 'questions.user_id')
+        ->select('questions.*', 'categories.name as category_name', 'users.name as user_name', 'users.photo as user_photo' )
+        ->orderBy('questions.id', 'DESC')
+        ->paginate(4);
+
         $categories = Category::all();
 
-        return view('user.questions', compact('categories'));
+        return view('user.questions', compact('questions' , 'categories'));
+    }
+
+    public function question_store(Request $request)
+    {
+        $request->validate([
+            'category_id' => 'required',
+            'question' => 'required',
+        ]);
+
+        $data = [
+            'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
+            'question' => $request->question,
+        ];
+
+        Question::create($data);
+
+        $notify = ['message' => 'Question Added Successfully', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
     }
 }
