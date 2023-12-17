@@ -14,9 +14,17 @@ Route::get('/posts/{id}', [UserController::class, 'single_post_view'])->name('si
 
 Route::get('/posts/category/{category_id}', [UserController::class, 'filter_by_category'])->name('filter_by_category');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::post('/posts/{id}/comment/store', [UserController::class, 'comment_store'])->name('comment_store');
+});
+
+
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

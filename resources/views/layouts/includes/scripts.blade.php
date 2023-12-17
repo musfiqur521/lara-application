@@ -10,3 +10,14 @@
 
 <!-- Main Script -->
 <script src="{{ asset('user_assets/js/script.js') }}"></script>
+
+{{-- summernote Script --}}
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+        $(document).ready(function() {
+    $('.summernote').summernote({
+        height:200,
+    });
+    });
+</script>

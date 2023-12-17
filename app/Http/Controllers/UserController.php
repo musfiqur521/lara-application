@@ -46,5 +46,7 @@ class UserController extends Controller
         ->orderBy('posts.id', 'DESC')
         ->get();
 
-        return view('user.filter_by_category', compact('posts'));}
+        return view('user.filter_by_category', compact('posts'));
+    }
+    
 }

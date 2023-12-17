@@ -73,19 +73,9 @@
             <div>
                 <h3 class="mb-4">Leave a Reply</h3>
                 <form method="POST">
-                    <div class="row">
-                        <div class="form-group col-md-12">
+                    @csrf
+                        <div class="summernote form-group">
                             <textarea class="form-control shadow-none" name="comment" rows="7" required></textarea>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <input class="form-control shadow-none" type="text" placeholder="Name" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <input class="form-control shadow-none" type="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <input class="form-control shadow-none" type="url" placeholder="Website">
-                            <p class="font-weight-bold valid-feedback">OK! You can skip this field.</p>
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Comment Now</button>
