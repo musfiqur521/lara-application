@@ -46,3 +46,52 @@
         }
     @endif
 </script>
+
+<!-- SweetAlert Js -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Sweetalert Script -->
+<script>
+    $('.delete').click(function(event) {
+        var form = $(this).closest("form");
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure delete this Question?',
+            text: "Once deleted, you will not be able to recover this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Delete',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit()
+            }
+        })
+    });
+</script>
+
+
+<!-- Logout Sweetalert Script -->
+<script>
+    $('.logout').click(function(event) {
+        var form = $(this).closest("form");
+        event.preventDefault();
+        Swal.fire({
+            title: 'Do you want to log out now?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit()
+            }
+        })
+    });
+</script>

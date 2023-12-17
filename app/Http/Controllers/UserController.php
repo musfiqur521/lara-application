@@ -111,4 +111,12 @@ class UserController extends Controller
         $notify = ['message' => 'Question Added Successfully', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
     }
+
+    public function question_delete($id)
+    {
+        Question::find($id)->delete();
+
+        $notify = ['message' => 'Question Deleted Successfully', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
+    }
 }

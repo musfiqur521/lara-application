@@ -25,7 +25,16 @@
                 <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <a href="#" class="btn-link h4">{{ $question->question }}</a>
-                    <button class="text-danger border-0 bg-white"> <i class="fas fa-trash"></i> </button>
+
+                    @if ($question->user_id === auth()->user()->id)
+                    <form action="{{ route('question_delete', $question->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="delete text-danger border-0 bg-white"> <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                    @endif
+
                 </div>
 
                 <ul class="card-meta list-inline mt-4">
