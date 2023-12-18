@@ -24,7 +24,7 @@
             <div class="card mt-4 border">
                 <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <a href="#" class="btn-link h4">{{ $question->question }}</a>
+                    <a href="{{ route('question_answers', $question->id) }}" class="btn-link h4">{{ $question->question }}</a>
 
                     @if ($question->user_id === auth()->user()->id)
                     <form action="{{ route('question_delete', $question->id) }}" method="post">
@@ -41,7 +41,7 @@
                     <li class="list-inline-item">
                     <a href="#" class="card-meta-author">
                         @if ($question->user_photo)
-                        <img src="{{ asset('images/user_photos/' . $question->user_photo) }}">
+                            <img src="{{ asset('images/user_photos/' . $question->user_photo) }}">
 
                         @else
                         <img src="{{ asset('images/user_photos/no_image.jpg') }}">
@@ -57,11 +57,26 @@
                     <i class="ti-bookmark"></i>{{ $question->category_name }}
                     </li>
                     <li class="list-inline-item text-primary">
-                    <i class="ti-comment"></i>5 answers
+
+                        {{-- Answer Count --}}
+                        <i class="ti-comment"></i>
+                    @php
+                        $answers = DB::table('question_answers')
+                        ->where('question_id', $question->id)
+                        ->get();
+                        echo $answers->count();
+
+                        if (count($answers) > 1) {
+                            echo ' Answers';
+                        } else {
+                            echo ' answer';
+                        }
+
+                    @endphp
                     </li>
                 </ul>
 
-                <a href="./question_answers.html" class="btn btn-outline-primary btn-sm mt-4 py-1">See answers</a>
+                <a href="{{ route('question_answers', $question->id) }}" class="btn btn-outline-primary btn-sm mt-4 py-1">See answers</a>
                 </div>
             </div>
 

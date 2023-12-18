@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Question;
 use App\Models\PostComment;
 use Illuminate\Http\Request;
+use App\Models\QuestionAnswer;
 use App\Http\Controllers\Controller;
 
 
@@ -117,6 +118,49 @@ class UserController extends Controller
         Question::find($id)->delete();
 
         $notify = ['message' => 'Question Deleted Successfully', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
+    }
+
+    public function question_answers($id)
+    {
+        $questionObj = new Question();
+        $answerObj = new QuestionAnswer();
+
+        $question = $questionObj->join('categories', 'categories.id', '=', 'questions.category_id')
+        ->join('users', 'users.id', '=', 'questions.user_id')
+        ->select('questions.*', 'categories.name as category_name', 'users.name as user_name', 'users.photo as user_photo' )
+        ->where('questions.id', $id)
+        ->first();
+
+        $answers = $answerObj->join('users', 'users.id', '=', 'question_answers.user_id')
+        ->select('question_answers.*', 'users.name as user_name', 'users.photo as user_photo' )
+        ->where('question_answers.question_id', $id)
+        ->orderBy('question_answers.id', 'DESC')
+        ->get();
+
+        return view('user.question_answers', compact('question', 'answers'));
+    }
+
+    public function question_answer_store(Request $request, $id)
+    {
+        $data = [
+            'question_id' => $id,
+            'user_id' => auth()->user()->id,
+            'answer' => $request->answer,
+        ];
+
+        QuestionAnswer::create($data);
+
+        $notify = ['message' => 'Answer Added Successfully', 'alert-type' => 'success'];
+
+        return redirect()->back()->with($notify);
+    }
+
+    public function question_answer_delete($id)
+    {
+        QuestionAnswer::find($id)->delete();
+
+        $notify = ['message' => 'Answer Deleted Successfully', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
     }
 }
