@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', [UserController::class, 'index']);
@@ -66,6 +67,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('/admin/category', CategoryController::class);
 
     Route::resource('/admin/post', PostController::class);
+
+    Route::resource('/admin/contact/messages', MessageController::class);
 
 
 
