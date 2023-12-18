@@ -61,19 +61,19 @@
                     </a>
                     <div class="dropdown-menu">
 
-        @auth
-            <a class="dropdown-item" href="author.html">{{ auth()->user()->name }}</a>
+                    @auth
+                        <a class="dropdown-item" href="author.html">{{ auth()->user()->name }}</a>
 
-            <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="logout dropdown-item">Logout</button>
-            </form>
+                        <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="logout dropdown-item">Logout</button>
+                        </form>
 
-            @else
-            <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                        @else
+                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
 
-            <a class="dropdown-item" href="{{ route('register') }}">Register</a>
-        @endauth
+                        <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                    @endauth
 
 
                     </div>
