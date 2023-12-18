@@ -53,7 +53,7 @@
                         <img src="{{ asset('images/user_photos/' . $answer->user_photo) }}" class="mr-3 avater">
 
                     @else
-                    <img src="{{ asset('images/user_photos/no_image.jpg') }}">
+                    <img src="{{ asset('images/user_photos/no_image.jpg') }}" class="mr-3 avater">
                     @endif
 
                     </a>
@@ -86,8 +86,29 @@
                     </p>
                     <hr class="my-3">
                     <div class="">
-                        <i class="far fa-heart"></i>
-                        <span class="ml-1">(10)</span>
+
+                        {{-- Like --}}
+                        @php
+                            $likes = DB::table('question_answer_likes')
+                                ->where('answer_id', $answer->id)
+                                ->get();
+                            $liker_users = DB::table('question_answer_likes')
+                                ->where('answer_id', $answer->id)
+                                ->where('user_id', auth()->user()->id)
+                                ->first();
+                        @endphp
+
+                      @if ($liker_users)
+                      <a href="{{ route('question_answer_unlike', $answer->id) }}">
+                        <i class="fa fa-heart text-danger"></i>
+                    </a>
+                      @else
+                      <a href="{{ route('question_answer_like', $answer->id) }}">
+                        <i class="far fa-heart text-dark"></i>
+                    </a>
+                      @endif
+
+                        <span class="ml-1">{{ $likes->count() }}</span>
                     </div>
                     </div>
                 </div>

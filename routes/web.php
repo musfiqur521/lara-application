@@ -35,6 +35,9 @@ Route::post('/questions/answers/{id}/store', [UserController::class, 'question_a
 
 Route::delete('/questions/answers/{id}/delete', [UserController::class, 'question_answer_delete'])->name('question_answer_delete');
 
+Route::get('/questions/answers/{id}/like', [UserController::class, 'question_answer_like'])->name('question_answer_like');
+
+Route::get('/questions/answers/{id}/unlike', [UserController::class, 'question_answer_unlike'])->name('question_answer_unlike');
 
 });
 

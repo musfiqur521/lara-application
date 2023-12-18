@@ -54,7 +54,9 @@
 
                     @endif
                     @else
-                    <img src="{{ asset('images/user_photos/no_image.jpg') }}" alt="" class="rounded-circle" style="height: 40px">
+
+                    {{-- <img src="{{ asset('images/user_photos/no_image.jpg') }}" alt="" class="rounded-circle" style="height: 40px"> --}}
+                    <i class="fas fa-user-circle" style="font-size: 20px"></i>
                     @endauth
 
                     <i class="ti-angle-down ml-1"></i>
