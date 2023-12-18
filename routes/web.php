@@ -39,6 +39,10 @@ Route::get('/questions/answers/{id}/like', [UserController::class, 'question_ans
 
 Route::get('/questions/answers/{id}/unlike', [UserController::class, 'question_answer_unlike'])->name('question_answer_unlike');
 
+Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+
+Route::post('/contact/store', [UserController::class, 'contact_store'])->name('contact_store');
+
 });
 
 require __DIR__.'/auth.php';
