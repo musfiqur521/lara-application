@@ -56,8 +56,8 @@
                             {{-- - Unique ID message Part ----}}
                         <div class="d-flex">
                             <a class="btn btn-info btn-sm mr-3" href="mailto:{{ $message->user_email }}" target="blank">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+                                <i class="fas fa-envelope"></i>
+                                    </a>
                             <form action="{{ route('messages.destroy', $message->id) }}" method="post" style="display: inline-block">
                                 @csrf
                                     <input type="hidden" name="_method" value="DELETE">
@@ -69,7 +69,7 @@
                     </td>
                 </tr>
                 @endforeach
-        </tbody>
+            </tbody>
         </table>
     </div>
 </div>

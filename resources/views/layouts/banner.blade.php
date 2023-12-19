@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
         <div class="col-lg-9 mx-auto">
-            <h1 class="mb-5">Laravel Project: <br> Blog Application</h1>
+            <h1 class="mb-5" style="color:darkorange">Blog Application</h1>
             <ul class="list-inline widget-list-inline">
 
                 @foreach ($categories as $category)

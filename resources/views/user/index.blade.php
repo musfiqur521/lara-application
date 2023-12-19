@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row justify-content-center">
     <div class="col-lg-8  mb-5 mb-lg-0">
-            <h2 class="h5 section-title">Recent Post</h2>
+            <h2 class="h5 section-title">All Post</h2>
 
                 @foreach ($posts as $post)
 
