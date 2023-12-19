@@ -27,9 +27,16 @@ class UserController extends Controller
         ->orderBy('posts.id', 'DESC')
         ->paginate(5);
 
+        $recentPost = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        ->select('posts.*', 'categories.name as category_name')
+        ->where('posts.status', 1)
+        ->orderBy('posts.id', 'DESC')
+        ->limit(3)
+        ->get();
+
         $categories = Category::all();
 
-        return view('user.index', compact('posts', 'categories'));
+        return view('user.index', compact('posts', 'categories', 'recentPost'));
     }
 
     public function single_post_view($id)
@@ -63,15 +70,16 @@ class UserController extends Controller
         ->paginate(5);
 
 
-        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        $recentPost = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
         ->select('posts.*', 'categories.name as category_name')
         ->where('posts.status', 1)
         ->orderBy('posts.id', 'DESC')
-        ->paginate(5);
+        ->limit(3)
+        ->get();
 
         $categories = Category::all();
 
-        return view('user.filter_by_category', compact('posts', 'filtered_posts', 'categories'));
+        return view('user.filter_by_category', compact( 'filtered_posts', 'categories', 'recentPost'));
     }
 
     public function comment_store(Request $request, $id)
@@ -100,16 +108,17 @@ class UserController extends Controller
         ->paginate(5);
 
 
-        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        $recentPost = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
         ->select('posts.*', 'categories.name as category_name')
         ->where('posts.status', 1)
         ->orderBy('posts.id', 'DESC')
-        ->paginate(5);
+        ->limit(3)
+        ->get();
 
 
         $categories = Category::all();
 
-        return view('user.questions', compact('questions' , 'categories', 'posts'));
+        return view('user.questions', compact('questions' , 'categories', 'recentPost'));
     }
 
     public function question_store(Request $request)
@@ -221,5 +230,11 @@ class UserController extends Controller
         $notify = ['message' => 'Message Sent Successfully', 'alert-type' => 'success'];
 
         return redirect()->back()->with($notify);
+    }
+
+    // __ about function
+    public function about()
+    {
+        return view('user.about');
     }
 }

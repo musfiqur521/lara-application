@@ -11,8 +11,8 @@
 
     <!-- about me -->
     <div class="widget widget-about">
-        <h4 class="widget-title">Hi, I am Alex!</h4>
-        <img class="img-fluid" src="images/author.jpg" alt="Themefisher">
+        <h4 class="widget-title">Hi, I am Musfiqur Rahman</h4>
+        <img class="img-fluid" src="{{ asset('user_assets/images/musfiqur.jpg') }}" alt="Themefisher">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vel in in donec iaculis tempus odio nunc laoreet . Libero ullamcorper.</p>
         <ul class="list-inline social-icons mb-3">
 
@@ -27,7 +27,7 @@
         <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
 
         </ul>
-        <a href="about-me.html" class="btn btn-primary mb-2">About me</a>
+        <a href="{{ route('about') }}" class="btn btn-primary mb-2">About me</a>
     </div>
 
 
@@ -40,12 +40,12 @@
                 <!-- post-item -->
                 <article class="widget-card">
                     <div class="d-flex">
-                        <img class="card-img-sm" src="{{ asset('post_thumbnails/' . $posts[$i]->thumbnail) }}">
+                        <img class="card-img-sm" src="{{ asset('post_thumbnails/' . $recentPost[$i]->thumbnail) }}">
                         <div class="ml-3">
-                        <h5><a class="post-title" href="{{ route('single_post_view', $posts[$i]->id) }}">{{ $posts[$i]->title }}</a></h5>
+                        <h5><a class="post-title" href="{{ route('single_post_view', $recentPost[$i]->id) }}">{{ $recentPost[$i]->title }}</a></h5>
                         <ul class="card-meta list-inline mb-0">
                             <li class="list-inline-item mb-0">
-                            <i class="ti-calendar"></i> {{ $posts[$i]->created_at->format('d M Y') }}
+                            <i class="ti-calendar"></i> {{ $recentPost[$i]->created_at->format('d M Y') }}
                             </li>
                         </ul>
                         </div>

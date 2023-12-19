@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+    Questions Answers |
+@endsection
 
 @section('mainSection')
 

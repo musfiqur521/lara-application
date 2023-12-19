@@ -5,35 +5,22 @@
             <img class="img-fluid" width="100px" src="{{ asset('user_assets/images/logo.png') }}"
             alt="Reader | Hugo Personal Blog Template">
         </a>
-        <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
-            <ul class="navbar-nav mx-auto">
+        <div class="order-3 text-center collapse navbar-collapse order-lg-2" id="navigation">
+            <ul class="mx-auto navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">Home Page</a>
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('about') }}">About</a>
                 </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                About <i class="ti-angle-down ml-1"></i>
-                </a>
-                <div class="dropdown-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                </li>
 
-                <a class="dropdown-item" href="about-me.html">About Me</a>
-
-                <a class="dropdown-item" href="about-us.html">About Us</a>
-
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('contact') }}">Contact</a>
-            </li>
-
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('questions') }}">Question & Answer</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('questions') }}">Question & Answer</a>
+                </li>
             </ul>
         </div>
 

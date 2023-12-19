@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8">
-    <title>Blog Application</title>
+    <title>@yield('title') Blog Application</title>
 
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

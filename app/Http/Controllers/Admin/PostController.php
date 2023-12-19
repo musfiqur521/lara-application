@@ -21,6 +21,7 @@ class PostController extends Controller
 
         $posts = $objPost->join('categories', 'categories.id', '=', 'posts.category_id')
             ->select('posts.*', 'categories.name as category_name')
+            ->orderBy('posts.id', 'DESC')
             ->get();
 
         return view('admin.post', compact('categories', 'posts'));
