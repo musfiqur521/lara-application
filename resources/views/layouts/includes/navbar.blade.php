@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-white">
         <a class="navbar-brand order-1" href="{{ url('/') }}">
             <img class="img-fluid" width="100px" src="{{ asset('user_assets/images/logo.png') }}"
-            alt="Reader | Hugo Personal Blog Template">
+            alt="Blog Application">
         </a>
         <div class="order-3 text-center collapse navbar-collapse order-lg-2" id="navigation">
             <ul class="mx-auto navbar-nav">
@@ -71,7 +71,7 @@
 
             <!-- search -->
             <form class="search-bar">
-            <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
+            <input id="search-query" name="s" type="search" placeholder="Search..">
             </form>
 
             <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">

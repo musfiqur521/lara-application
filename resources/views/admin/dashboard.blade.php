@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Dashboard
+Admin | Dashboard
 @endsection
 
 @php
@@ -11,7 +11,7 @@ $page = 'Dashboard';
 @section('mainpart')
 
 
-<div class="row">
+{{-- <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
@@ -20,8 +20,8 @@ $page = 'Dashboard';
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Earnings (Monthly)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                            Category</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Loading</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -38,8 +38,8 @@ $page = 'Dashboard';
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Earnings (Annual)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            Posts</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Loading</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -55,11 +55,11 @@ $page = 'Dashboard';
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Message
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Loading</div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
@@ -85,8 +85,8 @@ $page = 'Dashboard';
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Pending Requests</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            Pages</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Loading</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -95,11 +95,11 @@ $page = 'Dashboard';
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- Content Row -->
 
-<div class="row">
+{{-- <div class="row">
 
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
@@ -326,25 +326,7 @@ $page = 'Dashboard';
         </div>
 
     </div>
-</div>
+</div> --}}
 
 
 @endsection
-
-{{-- <x-admin-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-admin-layout> --}}

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row justify-content-center">
     <div class="col-lg-8  mb-5 mb-lg-0">
-        <h1 class="h2 mb-4">Showing items from <mark>{{ $posts->first()->category_name }}</mark></h1>
+        <h1 class="h2 mb-4">Showing items from <mark>{{ $filtered_posts->first()->category_name }}</mark></h1>
 
                 @foreach ($filtered_posts as $post)
 
