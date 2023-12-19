@@ -25,7 +25,7 @@ class UserController extends Controller
         ->select('posts.*', 'categories.name as category_name')
         ->where('posts.status', 1)
         ->orderBy('posts.id', 'DESC')
-        ->get();
+        ->paginate(5);
 
         $categories = Category::all();
 
@@ -84,16 +84,25 @@ class UserController extends Controller
     public function questions()
     {
         $questionObj = new Question();
+        $postObj = new Post();
 
         $questions = $questionObj->join('categories', 'categories.id', '=', 'questions.category_id')
         ->join('users', 'users.id', '=', 'questions.user_id')
         ->select('questions.*', 'categories.name as category_name', 'users.name as user_name', 'users.photo as user_photo' )
         ->orderBy('questions.id', 'DESC')
-        ->paginate(4);
+        ->paginate(5);
+
+
+        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        ->select('posts.*', 'categories.name as category_name')
+        ->where('posts.status', 1)
+        ->orderBy('posts.id', 'DESC')
+        ->paginate(5);
+
 
         $categories = Category::all();
 
-        return view('user.questions', compact('questions' , 'categories'));
+        return view('user.questions', compact('questions' , 'categories', 'posts'));
     }
 
     public function question_store(Request $request)
@@ -203,7 +212,7 @@ class UserController extends Controller
         ContactMessage::create($data);
 
         $notify = ['message' => 'Message Sent Successfully', 'alert-type' => 'success'];
-        
+
         return redirect()->back()->with($notify);
     }
 }

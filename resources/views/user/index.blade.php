@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row justify-content-center">
     <div class="col-lg-8  mb-5 mb-lg-0">
-             <h2 class="h5 section-title">Recent Post</h2>
+            <h2 class="h5 section-title">Recent Post</h2>
 
                 @foreach ($posts as $post)
 
@@ -33,19 +33,12 @@
         </div>
     </article>
 
-                @endforeach
+    @endforeach
 
-        <ul class="pagination justify-content-center">
-            <li class="page-item page-item active ">
-                <a href="#!" class="page-link">1</a>
-            </li>
-            <li class="page-item">
-                <a href="#!" class="page-link">2</a>
-            </li>
-            <li class="page-item">
-                <a href="#!" class="page-link">&raquo;</a>
-            </li>
-        </ul>
+    {{-- pagination --}}
+    <div class="mt-5">
+        {{ $posts->links('pagination::bootstrap-5') }}
+    </div>
     </div>
 
         {{-- rightbar  --}}

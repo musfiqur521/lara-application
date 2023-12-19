@@ -35,48 +35,26 @@
     <div class="widget">
         <h4 class="widget-title">Recent Post</h4>
 
-        <!-- post-item -->
-        <article class="widget-card">
-        <div class="d-flex">
-            <img class="card-img-sm" src="{{ asset('user_assets/images/post/post-10.jpg') }}">
-            <div class="ml-3">
-            <h5><a class="post-title" href="post/elements/">Elements That You Can Use In This Template.</a></h5>
-            <ul class="card-meta list-inline mb-0">
-                <li class="list-inline-item mb-0">
-                <i class="ti-calendar"></i>15 jan, 2020
-                </li>
-            </ul>
-            </div>
-        </div>
-        </article>
+        @for ($i = 0; $i <3; $i++)
 
-        <article class="widget-card">
-        <div class="d-flex">
-            <img class="card-img-sm" src="{{ asset('user_assets/images/post/post-3.jpg') }}">
-            <div class="ml-3">
-            <h5><a class="post-title" href="post-details.html">Advice From a Twenty Something</a></h5>
-            <ul class="card-meta list-inline mb-0">
-                <li class="list-inline-item mb-0">
-                <i class="ti-calendar"></i>14 jan, 2020
-                </li>
-            </ul>
-            </div>
-        </div>
-        </article>
+                <!-- post-item -->
+                <article class="widget-card">
+                    <div class="d-flex">
+                        <img class="card-img-sm" src="{{ asset('post_thumbnails/' . $posts[$i]->thumbnail) }}">
+                        <div class="ml-3">
+                        <h5><a class="post-title" href="{{ route('single_post_view', $posts[$i]->id) }}">{{ $posts[$i]->title }}</a></h5>
+                        <ul class="card-meta list-inline mb-0">
+                            <li class="list-inline-item mb-0">
+                            <i class="ti-calendar"></i> {{ $posts[$i]->created_at->format('d M Y') }}
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                    </article>
 
-        <article class="widget-card">
-        <div class="d-flex">
-            <img class="card-img-sm" src="{{ asset('user_assets/images/post/post-7.jpg') }}">
-            <div class="ml-3">
-            <h5><a class="post-title" href="post-details.html">Advice From a Twenty Something</a></h5>
-            <ul class="card-meta list-inline mb-0">
-                <li class="list-inline-item mb-0">
-                <i class="ti-calendar"></i>14 jan, 2020
-                </li>
-            </ul>
-            </div>
-        </div>
-        </article>
+        @endfor
+
+
     </div>
 
     <!-- categories -->
