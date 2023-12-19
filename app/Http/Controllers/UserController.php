@@ -55,16 +55,23 @@ class UserController extends Controller
     {
         $postObj = new Post();
 
-        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        $filtered_posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
         ->select('posts.*', 'categories.name as category_name')
         ->where('posts.category_id', $id)
         ->where('posts.status', 1)
         ->orderBy('posts.id', 'DESC')
-        ->get();
+        ->paginate(5);
 
 
+        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        ->select('posts.*', 'categories.name as category_name')
+        ->where('posts.status', 1)
+        ->orderBy('posts.id', 'DESC')
+        ->paginate(5);
 
-        return view('user.filter_by_category', compact('posts'));
+        $categories = Category::all();
+
+        return view('user.filter_by_category', compact('posts', 'filtered_posts', 'categories'));
     }
 
     public function comment_store(Request $request, $id)

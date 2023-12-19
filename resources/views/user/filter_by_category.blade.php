@@ -9,7 +9,7 @@
     <div class="col-lg-8  mb-5 mb-lg-0">
         <h1 class="h2 mb-4">Showing items from <mark>{{ $posts->first()->category_name }}</mark></h1>
 
-                @foreach ($posts as $post)
+                @foreach ($filtered_posts as $post)
 
     <article class="card mb-4">
         <div class="post-slider">
@@ -33,17 +33,10 @@
 
                 @endforeach
 
-        <ul class="pagination justify-content-center">
-            <li class="page-item page-item active ">
-                <a href="#!" class="page-link">1</a>
-            </li>
-            <li class="page-item">
-                <a href="#!" class="page-link">2</a>
-            </li>
-            <li class="page-item">
-                <a href="#!" class="page-link">&raquo;</a>
-            </li>
-        </ul>
+            <div class="mt-5">
+                {{ $filtered_posts->links('pagination::bootstrap-5') }}
+            </div>
+
     </div>
 
         {{-- rightbar  --}}
